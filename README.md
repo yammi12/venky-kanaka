@@ -1,50 +1,71 @@
-package wpmcounter;
-
-import java.time.LocalTime;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
-public class WPMprogram {
-	
-	static 
-	String[] words= {"envelope","cantelope","the","hello","microphone",
-			"elephant","biscuit","hammer","went","cap"};
-	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		System.out.println("3");
-		TimeUnit.SECONDS.sleep(1);
-		
-        System.out.println("2");
-        TimeUnit.SECONDS.sleep(1);
-        
-        System.out.println("1");
-        TimeUnit.SECONDS.sleep(1);
-        
-        System.out.println("START TYPING.....");
-        TimeUnit.SECONDS.sleep(1);
-        
-        Random rand=new Random();
-        for(int i=0;i<10;i++) {
-        	
-        
-        System.out.print(words[rand.nextInt(9)] + " ");
-	}
-        System.out.println();
-        
-     double start = LocalTime.now().toNanoOfDay();
-        Scanner scan=new Scanner(System.in);
-        String typedWords = scan.nextLine();
-        
-        double end = LocalTime.now().toNanoOfDay();
-        double elapsedTime = end-start;
-        double seconds=elapsedTime/1000000000.0;
-        int numChars=typedWords.length();
-        int WPM=(int) ((((double)numChars/ 5)/seconds) *60);
-        System.out.println("your WPM is : "  + WPM +   "!");
-        System.out.println(seconds);
-        
-	}
-	
+
+public class Floyds_Algorithm {
+
+
+public static void main(String[] args) {
+int wt[][]=new int[10][10]; int n,i,j;
+System.out.println("\nCreate A Graph Using Adjancency Matrix"); System.out.println("\n\nHow Many Vertices are There?:"); Scanner in = new Scanner(System.in);
+n = in.nextInt();
+System.out.println("\n Enter the Elements"); System.out.println("[Enter 999 as infinity value]"); for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+{
+System.out.println("\nwt["+i+"]["+j+"]"); wt[i][j]=in.nextInt();
+ 
+}
+}
+System.out.println("\n\tComputing All Pair Shrotest Path...\n");
+Floyd_shortest_path(wt,n);
+}
+public static void Floyd_shortest_path(int wt[][],int n)
+{
+int D[][][]= new int[5][10][10]; int i,j,k;
+for(i=1;i<=n;i++)
+{
+for(j=1;j<=n;j++)
+{
+D[0][i][j]=wt[i][j];
+}
+}
+for(k=1;k<=n;k++) {
+for(i=1;i<=n;i++) {
+for(j=1;j<=n;j++) {
+D[k][i][j] = min(D[k-1][i][j],(D[k-1][i][k]+D[k-1][k][j]));
+}
+}
+}
+for(k=0;k<=n;k++)
+{
+System.out.println("D("+k+")\t");
+for(i=1;i<=n;i++)
+ 
+{
+for(j=1;j<=n;j++)
+{
+System.out.println(""+D[k][i][j]);
+}
+System.out.println("\n");
+}
+}
+}
+public static int min(int a,int b)
+{
+if(a<b)
+return a;
+ 
+else
+
 
 }
+ 
+
+
+return b;
+ 
+
+
+}
+
+    
