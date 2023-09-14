@@ -5,14 +5,21 @@ public class Floyds_Algorithm {
 
 
 public static void main(String[] args) {
-int wt[][]=new int[10][10]; int n,i,j;
-System.out.println("\nCreate A Graph Using Adjancency Matrix"); System.out.println("\n\nHow Many Vertices are There?:"); Scanner in = new Scanner(System.in);
+int wt[][]=new 
+int[10][10]; 
+int n,i,j;
+System.out.println("\nCreate A Graph Using Adjancency Matrix");
+System.out.println("\n\nHow Many Vertices are There?:"); 
+Scanner in = new Scanner(System.in);
 n = in.nextInt();
-System.out.println("\n Enter the Elements"); System.out.println("[Enter 999 as infinity value]"); for(i=1;i<=n;i++)
+System.out.println("\n Enter the Elements"); 
+System.out.println("[Enter 999 as infinity value]"); 
+for(i=1;i<=n;i++)
 {
 for(j=1;j<=n;j++)
 {
-System.out.println("\nwt["+i+"]["+j+"]"); wt[i][j]=in.nextInt();
+System.out.println("\nwt["+i+"]["+j+"]"); 
+wt[i][j]=in.nextInt();
  
 }
 }
@@ -21,7 +28,9 @@ Floyd_shortest_path(wt,n);
 }
 public static void Floyd_shortest_path(int wt[][],int n)
 {
-int D[][][]= new int[5][10][10]; int i,j,k;
+int D[][][]= new int[5][10][10];
+
+int i,j,k;
 for(i=1;i<=n;i++)
 {
 for(j=1;j<=n;j++)
